@@ -4,11 +4,12 @@ var request_max_value = 0;
 var maxlimit_reached = false;
 var delivery_lat;
 var delivery_lng;
-var locationDetails = {}
-locationDetails[4] = "12.9171,77.6271";
+var locationDetails = {};
+/**locationDetails[4] = "12.9171,77.6271";
 locationDetails[2] = "12.9171,77.6371";
 locationDetails[3] = "12.9161,77.6971";
 locationDetails[1] = "12.9279,77.6271";
+**/
 
 var originalAlert = "<input type=\"text\"  tabindex=\"3\" placeholder=\"Type here\" />"+
     "<div class=\"sa-input-error\"></div>";
@@ -149,7 +150,7 @@ function initMap(map_id,inputbox) {
       delivery_lat = place.geometry.location.lat();
       delivery_lng = place.geometry.location.lng();
       console.log(delivery_lat, delivery_lng);
-      gpsSimulator(function(data){
+      gpsSimulator(function(){
         if(data){
             boysInVicinity();
         }
@@ -527,13 +528,16 @@ function gpsSimulator(callback){
     var url = "https://boiling-island-46905.herokuapp.com/go";
     $.ajax({
         type: "GET",
-        dataType: "jsonp",
+        dataType: "json",
         url: url,
         crossDomain: true,
         data: { "latitude": delivery_lat,
             "longitude"  : delivery_lng           
         },        
-        success: function(data){            
+        success: function(data){    
+            console.log(data);   
+            data = JSON.parse(data);            
+            locationDetails = data;
             return callback(true);  
         },
         error: function(err){
