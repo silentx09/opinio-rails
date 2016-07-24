@@ -150,7 +150,7 @@ function initMap(map_id,inputbox) {
       delivery_lat = place.geometry.location.lat();
       delivery_lng = place.geometry.location.lng();
       console.log(delivery_lat, delivery_lng);
-      gpsSimulator(function(){
+      gpsSimulator(function(data){
         if(data){
             boysInVicinity();
         }
@@ -528,7 +528,7 @@ function gpsSimulator(callback){
     var url = "https://boiling-island-46905.herokuapp.com/go";
     $.ajax({
         type: "GET",
-        dataType: "json",
+        dataType: "jsonp",
         url: url,
         crossDomain: true,
         data: { "latitude": delivery_lat,
