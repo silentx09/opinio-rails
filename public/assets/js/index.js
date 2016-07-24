@@ -5,10 +5,10 @@ var maxlimit_reached = false;
 var delivery_lat;
 var delivery_lng;
 var locationDetails = {}
-locationDetails[4] = "12.9171,77.6271"
-locationDetails[2] = "12.9171,77.6371"
-locationDetails[3] = "12.9161,77.6971"
-locationDetails[1] = "12.9279,77.6271"
+locationDetails[4] = "12.9171,77.6271";
+locationDetails[2] = "12.9171,77.6371";
+locationDetails[3] = "12.9161,77.6971";
+locationDetails[1] = "12.9279,77.6271";
 
 var originalAlert = "<input type=\"text\"  tabindex=\"3\" placeholder=\"Type here\" />"+
     "<div class=\"sa-input-error\"></div>";
@@ -146,9 +146,15 @@ function initMap(map_id,inputbox) {
           //alert(storeLocation);
        }
     
-      delivery_lat = place.geometry.location.lat();      
+      delivery_lat = place.geometry.location.lat();
       delivery_lng = place.geometry.location.lng();
-      boysInVicinity();
+      console.log(delivery_lat, delivery_lng);
+      gpsSimulator(function(data){
+        if(data){
+            boysInVicinity();
+        }
+      });
+      
       if (!place.geometry) {
         window.alert("Autocomplete's returned place contains no geometry");
         return;
@@ -158,7 +164,7 @@ function initMap(map_id,inputbox) {
         map.fitBounds(place.geometry.viewport);
     } else {
         map.setCenter(place.geometry.location);
-        map.setZoom(13);  
+        map.setZoom(13);
     }
     marker.setIcon(({
         url: place.icon,
@@ -515,4 +521,23 @@ function populateETAs(requests, responses){
         $(requests[i]).html(responses[i]);
         
     }
+}
+
+function gpsSimulator(callback){
+    var url = "https://boiling-island-46905.herokuapp.com/go";
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: url,
+        data: { "latitude": delivery_lat,
+            "longitude"  : delivery_lng           
+        },        
+        success: function(data){            
+            return callback(true);  
+        },
+        error: function(err){
+            return callback(false); 
+        }
+    });  
+
 }
