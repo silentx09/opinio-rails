@@ -536,7 +536,6 @@ function gpsSimulator(callback){
         },        
         success: function(data){    
             console.log(data);   
-            data = JSON.parse(data);            
             locationDetails = data;
             return callback(true);  
         },
