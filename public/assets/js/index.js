@@ -534,9 +534,9 @@ function gpsSimulator(callback){
         data: { "latitude": delivery_lat,
             "longitude"  : delivery_lng           
         },        
-        success: function(data){    
-            console.log(data);   
-            locationDetails = data;
+        jsonpCallback: "myJsonMethod",
+
+        success: function(data){                
             return callback(true);  
         },
         error: function(err){
@@ -544,4 +544,9 @@ function gpsSimulator(callback){
         }
     });  
 
+}
+
+function myJsonMethod(data){
+    console.log(data);   
+    locationDetails = data;
 }
