@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Boy:</strong>
+  <%= @boy_request.boy_id %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @boy_request.request_id %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @boy_request.store_id %>
+</p>
+
+<p>
+  <strong>Eta:</strong>
+  <%= @boy_request.eta %>
+</p>
+
+<p>
+  <strong>Etd:</strong>
+  <%= @boy_request.etd %>
+</p>
+
+<p>
+  <strong>Request status:</strong>
+  <%= @boy_request.request_status %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @boy_request.order_id %>
+</p>
+
+<p>
+  <strong>Delivery start time:</strong>
+  <%= @boy_request.delivery_start_time %>
+</p>
+
+
+<p>
+  <strong>Delivery destination:</strong>
+  <%= @boy_request.delivery_destination %>
+</p>
+
+<p>
+  <strong>Delivery status:</strong>
+  <%= @boy_request.delivery_status %>
+</p>
+
+<p>
+  <strong>Delivery lat:</strong>
+  <%= @boy_request.delivery_lat %>
+</p>
+
+<p>
+  <strong>Delivery long:</strong>
+  <%= @boy_request.delivery_lng %>
+</p>
+
+<%= link_to 'Edit', edit_boy_request_path(@boy_request) %> |
+<%= link_to 'Back', boy_requests_path %>

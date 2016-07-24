@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Opiniothon</title>
+  <meta name="generator" content="Bootply" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="<%= ENV['ASSET_URL'] %>assets/css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <link href="<%= ENV['ASSET_URL'] %>assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">    
+      <link href="<%= ENV['ASSET_URL'] %>assets/css/styles.css" rel="stylesheet">
+      <link href="<%= ENV['ASSET_URL'] %>assets/css/sweetalert.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">          
+
+      <!--scripts-->    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>       
+      <script src="http://localhost:3000/assets/js/bootstrap-datetimepicker.min.js"></script>     
+      <script src="http://localhost:3000/assets/js/sweetalert.min.js"></script>     
+      <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
+    </head>
+    <body>
+
+      <div class="container">
+        <ul class="nav nav-pills nav-justified header-tabs">
+          <li class="active"><a href="#tab_a" data-toggle="pill">POST REQUEST</a></li>
+          <li onclick="getDeliveryRequests()"><a href="#tab_b" data-toggle="pill">TRACK REQUESTS</a></li>
+          <li onclick = "getDeliveries()"><a href="#tab_c" data-toggle="pill">TRACK DELIVERIES</a></li>          
+        </ul>
+        <div class="tab-content">
+          <br>
+          <div class="tab-pane active tab-panel-content" id="tab_a">
+            <div class="panel panel-default  col-md-12">
+              <div class="panel-body">
+                <!-- Input group starts -->                
+                <div class="form-group col-md-12">
+                  <label for="pac-input">Store location to arrive.</label>
+                  <input type="text" class="form-control" id="pac-input">
+                  <input type="text" id="hidden_place" />
+                  <div id="type-selector" class="controls" style="display:none">
+                    <input type="radio" name="type" id="changetype-all" checked="checked">
+                    <label for="changetype-all">All</label>
+
+                    <input type="radio" name="type" id="changetype-establishment">
+                    <label for="changetype-establishment">Establishments</label>
+
+                    <input type="radio" name="type" id="changetype-address">
+                    <label for="changetype-address">Addresses</label>
+
+                    <input type="radio" name="type" id="changetype-geocode">
+                    <label for="changetype-geocode">Geocodes</label>
+                  </div>
+                </div>
+                
+                
+                <div class = "col-md-6">
+                  <div class="form-group">
+                    <label for="time">Time to arrive.</label>
+                    <!-- <input type="text" class="form-control" id="location"> -->
+                    <div id="datetimepicker3" class="input-append">
+                      <input data-format="hh:mm:ss" type="text" class = "alt-form-control" id="reach_time"></input>
+                      &nbsp;
+                      <span class="add-on">
+                        <i data-time-icon="glyphicon glyphicon-time" data-date-icon="glyphicon glyphicon-calendar">
+                        </i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class = "col-md-6">
+                  <div class="form-group">
+                    <label for="boycount">Number of delivery boys.</label>
+                    <!-- <input type="text" class="form-control" id="boycount"> -->
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                      </span>
+                      <input type="text" name="quant[1]" class="form-control input-number" value="1" id = "no_of_boys_required" min="1" max="10">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                          <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class = "col-md-6">
+                  <div class="form-group">
+                    <label for="amount_per_boy">Amount per boy.</label>
+                    <input type="text" class="alt-form-control" id="amount_per_boy" value="50" disabled>&nbsp;&nbsp;x <span id = "delivery_boys_count"> 1 </span>
+                  </div>
+                </div>
+
+                <div class = "col-md-6">
+                  <div class="form-group">
+                    <label for="total_amount">Total Amount in Rupees.</label>
+                    <input type="text" class="form-control" id="total_amount" value="50.00">
+                  </div>
+                </div>                          
+                 
+                 <div class = "col-md-12">
+                 <button type="button" class="btn btn-primary" onclick="submitRequest()">Submit</button> 
+               </div>
+                <!-- Input group ends -->
+              </div>
+            </div>  
+
+            <div class="panel panel-default col-md-12" id = "mapcontainer">
+              <div id = "map_heading">We have <span id = "available_boys">0</span> delivery boys in your vicinity (within 5 kms) to serve you.</div>
+              <div id="map"></div>
+            </div> 
+
+          </div>        
+
+          <div class="tab-pane" id="tab_b">    
+          <!--
+              Place to render request view.
+          -->                   
+
+          <!-- place to render delivery boys_details -->
+          
+            </div>
+
+          <div class="tab-pane" id="tab_c">    
+
+          <!-- Place to render delivery view -->
+
+                                
+             </div>                        
+              
+              </div><!-- tab content -->
+            </div><!-- end of container -->
+            <!-- script references -->		
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNsUQSDV5D-PqU-bfPknW8ZXVkFrdx8tY&libraries=places,geometry&language=en&callback=initMap"
+            async defer></script>            
+            <script src="<%= ENV['ASSET_URL'] %>assets/js/bootstrap.min.js"></script>
+            <script src="<%= ENV['ASSET_URL'] %>assets/js/index.js"></script>
+            <script src="<%= ENV['ASSET_URL'] %>assets/js/apiCalls.js"></script>            
+          </body>
+          </html>
+

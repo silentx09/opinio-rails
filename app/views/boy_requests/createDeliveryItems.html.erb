@@ -1,0 +1,53 @@
+<% if @deliveries.blank? %>
+<% else %>
+<div id ="tab_c_request_list">
+  <% @deliveries.each do |request| %>  
+<div class="panel panel-default col-md-12 track_request_heading track_request classHelper_2" id ="id_helper_<%=request.order_id %>_<%= request.boy_id %>">
+              <div class = "col-md-4 track_request_heading_item" id = "delivery_order_id_<%=request.order_id %>_<%= request.boy_id %>">
+                Order Id - <%= request.order_id %>
+                <p style="display:none" id = "delivery_lat_<%=request.order_id %>_<%= request.boy_id %>"><%= request.delivery_lat %></p>
+                <p style="display:none" id = "delivery_lng_<%=request.order_id %>_<%= request.boy_id %>"><%= request.delivery_lng %></p>
+              </div>
+              <div class = "col-md-4 track_request_heading_item" id = "delivery_start_time_<%=request.order_id %>_<%= request.boy_id %>">
+                Delivery started - <%= request.delivery_start_time %>
+              </div>
+              <div class = "col-md-4 track_request_heading_item" id="delivery_status_<%=request.order_id %>_<%= request.boy_id %>">               
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Status
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" id = "delivery_status">
+                    <li><a href="#">On the way</a></li>
+                    <li><a href="#">Reached</a></li>                    
+                  </ul>
+                </div>
+              </div>
+            </div>   
+     
+             <div class="panel panel-default col-md-12 track_request track_request_details" id = "driver_boy_<%= request.boy_id %>">
+              <!-- <p>Delivery boys Details</p> -->
+              <div class = "col-md-3 track_request_details_item" id = "delivery_name_<%=request.order_id %>_<%= request.boy_id %>">
+                Name - <%= request.name %>
+              </div>
+              <div class = "col-md-3 track_request_details_item" id = "delivery_mobile_<%=request.order_id %>_<%= request.boy_id %>">
+                Contact - <%= request.mobile %>
+              </div>
+                 <div class = "col-md-3 track_request_details_item" id = "delivery_etd_<%=request.order_id %>_<%= request.boy_id %>">
+                ETD - <%= request.etd %>
+              </div>
+              <div class = "col-md-3 track_request_details_item" id = "delivery_status_<%=request.order_id %>_<%= request.boy_id %>">
+                <% if request.delivery_status != "" %>
+                <%= request.delivery_status %>
+                <% else %>
+                No Status
+                <% end %>
+              </div>
+                             
+              </div>    
+
+
+             <% end %>
+</div>
+<% end %>
+ 

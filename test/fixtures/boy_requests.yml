@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  boy_id: 1
+  request_id: 1
+  eta: 2016-05-14 20:45:55
+  request_status: MyString
+  order_id: 1
+  delivery_start_time: MyString
+  datetime: MyString
+  delivery_destination: MyText
+  delivery_status: MyString
+
+two:
+  boy_id: 1
+  request_id: 1
+  eta: 2016-05-14 20:45:55
+  request_status: MyString
+  order_id: 1
+  delivery_start_time: MyString
+  datetime: MyString
+  delivery_destination: MyText
+  delivery_status: MyString

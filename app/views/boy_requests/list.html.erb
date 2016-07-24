@@ -1,0 +1,51 @@
+<% if @requests.blank? %>
+<% else %>
+
+  <% @requests.each do |request| %>
+  <div id ="request_id_<%= request.request_id %>" class="helperClass request_id_<%=request.request_id %>">  
+    <div class="panel panel-default col-md-12 track_request track_request_details" id = "delivery_boy_<%= request.boy_id %>">
+              <!-- <p>Delivery boys Details</p> -->
+              <div class = "col-md-2 track_request_details_item" id = "boy_id_<%=request.request_id %>_<%= request.boy_id %>">
+                Id - <%= request.boy_id %>
+                <p style ="display : none" id = "id_<%=request.request_id %>_<%= request.boy_id %>"><%=request.id%></p>
+                
+              </div>
+              <div class = "col-md-2 track_request_details_item" id = "name_<%=request.request_id %>_<%= request.boy_id %>" >
+                Name - <%= request.name %>
+              </div>
+              <div class = "col-md-2 track_request_details_item" id = "mobile_<%=request.request_id %>_<%= request.boy_id %>">
+                Contact - <%= request.mobile %>
+              </div>
+              <div class = "col-md-2 track_request_details_item" id = "eta_<%=request.request_id %>_<%= request.boy_id %>">
+                <% if request.request_status == "Arrived"%>
+                <% request.eta = 0%>                
+                <%end%>
+                ETA - <%= request.eta %>
+              </div>
+              <div class = "col-md-2 track_request_details_item" id = "request_status_<%=request.request_id %>_<%= request.boy_id %>">
+                <%= request.request_status %>
+              </div>
+              <div class = "col-md-2 track_request_details_item">
+                <button type="button" class="btn btn-primary" id="assign_delivery$<%=request.request_id %>_<%= request.boy_id %>" onclick="assignDelivery(this)" >Assign Delivery</button>
+                &nbsp;<a class = "delivery_destination" data-toggle="collapse" aria-expanded="false" aria-controls="delivery_boy_<%=request.request_id %>_<%= request.boy_id %>" href="#delivery_boy_<%=request.request_id %>_<%= request.boy_id %>" id = "dropdown_anchor_<%=request.request_id %>_<%= request.boy_id %>"><i class="glyphicon glyphicon-arrow-down"></i></a>
+              </div>    
+              <div class="collapse col-md-12 delivery_destination_collpase" id="delivery_boy_<%=request.request_id %>_<%= request.boy_id %>">                
+                <div class = "col-md-6 delivery_destination_collpase_item">
+                    Customer order number - <span id = "collapse_item_order_<%=request.request_id %>_<%= request.boy_id %>"><%= request.order_id %></span>
+                  </div>
+                  <div class = "col-md-6 delivery_destination_collpase_item">
+                    Delivery Location - <span id = "collapse_item_dest_<%=request.request_id %>_<%= request.boy_id %>"><%= request.delivery_destination %></span>
+                  </div>                  
+              </div>          
+             </div>
+
+  </div>
+  <% end %>
+
+<% end %>
+
+
+
+ 
+
+ 

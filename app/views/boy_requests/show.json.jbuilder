@@ -1,0 +1,1 @@
+json.extract! @boy_request, :id, :boy_id, :request_id, :eta, :request_status, :order_id, :delivery_start_time, :delivery_destination, :delivery_status, :created_at, :updated_at, :store_id, :delivery_lat, :delivery_lng, :etd

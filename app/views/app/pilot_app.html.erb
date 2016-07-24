@@ -1,0 +1,18 @@
+<html>
+<head>
+	<link href="<%= ENV['ASSET_URL'] %>assets/css/sweetalert.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="<%= ENV['ASSET_URL'] %>assets/js/apiCalls.js"></script>
+	<script src="<%= ENV['ASSET_URL'] %>assets/js/sweetalert.min.js"></script>     
+</head>
+Store Id <br>
+<input type="text" id="store_id" value="3"/><br>
+Request Id <br>
+<input type="text" id="request_id" value="9"/><br>
+Boy Id <br>
+<input type="text" id="boy_id" /><br>
+Request Status <br>
+<input type="text" id="request_status" value="On Route"/><br>
+<button id = "acceptRequest" onclick="acceptRequest()">Accept</button>
+</html>

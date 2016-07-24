@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Boy Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Boy</th>
+      <th>Request</th>
+      <th>Store</th>
+      <th>Eta</th>
+      <th>Request status</th>
+      <th>Order</th>
+      <th>Delivery start time</th>      
+      <th>Delivery destination</th>
+      <th>Delivery status</th>
+      <th>Delivery Lat</th>
+      <th>Delivery Long</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boy_requests.each do |boy_request| %>
+      <tr>
+        <td><%= boy_request.boy_id %></td>
+        <td><%= boy_request.request_id %></td>
+        <td><%= boy_request.store_id %></td>
+        <td><%= boy_request.eta %></td>
+        <td><%= boy_request.request_status %></td>
+        <td><%= boy_request.order_id %></td>
+        <td><%= boy_request.delivery_start_time %></td>        
+        <td><%= boy_request.delivery_destination %></td>
+        <td><%= boy_request.delivery_status %></td>
+        <td><%= boy_request.delivery_lat %></td>
+        <td><%= boy_request.delivery_lng %></td>
+        <td><%= link_to 'Show', boy_request %></td>
+        <td><%= link_to 'Edit', edit_boy_request_path(boy_request) %></td>
+        <td><%= link_to 'Destroy', boy_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Boy request', new_boy_request_path %>

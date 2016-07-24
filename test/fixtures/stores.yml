@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nam: 
+  address: 
+  lat: 
+  long: 
+  contact_person: 
+  mobile: MyString
+
+two:
+  nam: 
+  address: 
+  lat: 
+  long: 
+  contact_person: 
+  mobile: MyString

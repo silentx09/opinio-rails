@@ -1,0 +1,29 @@
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: 5
+#   username: root
+#   password: root
+#   socket: /tmp/mysql.sock
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: pguser
+  password: root
+
+development:
+  <<: *default
+  database: opinio_development
+
+test:
+  <<: *default
+  database: opinio_test
+
+production:
+  <<: *default
+  database: opinio_production
+  username: opinio
+  password: <%= ENV['OPINIO_DATABASE_PASSWORD'] %>

@@ -1,0 +1,98 @@
+-- Converted by db_converter
+START TRANSACTION;
+SET standard_conforming_strings=off;
+SET escape_string_warning=off;
+SET CONSTRAINTS ALL DEFERRED;
+
+CREATE TABLE "boy_requests" (
+    "id" integer NOT NULL,
+    "boy_id" integer DEFAULT NULL,
+    "request_id" integer DEFAULT NULL,
+    "eta" varchar(510) DEFAULT NULL,
+    "request_status" varchar(510) DEFAULT NULL,
+    "order_id" integer DEFAULT NULL,
+    "delivery_start_time" varchar(510) DEFAULT NULL,
+    "delivery_destination" text ,
+    "delivery_status" varchar(510) DEFAULT NULL,
+    "created_at" timestamp with time zone NOT NULL,
+    "updated_at" timestamp with time zone NOT NULL,
+    "store_id" integer DEFAULT NULL,
+    "delivery_lat" varchar(510) DEFAULT NULL,
+    "delivery_lng" varchar(510) DEFAULT NULL,
+    "etd" varchar(510) DEFAULT NULL,
+    PRIMARY KEY ("id")
+);
+
+INSERT INTO "boy_requests" VALUES (62,1,39,NULL,'On Route',101,'Mon, 11 Jul 2016 13:41:31','Hebbal, Bengaluru, Karnataka, India',NULL,'2016-07-11 13:40:27','2016-07-11 13:41:31',3,'13.0357695','77.59702219999997',NULL);
+CREATE TABLE "delivery_boys" (
+    "id" integer NOT NULL,
+    "name" varchar(510) DEFAULT NULL,
+    "mobile" varchar(510) DEFAULT NULL,
+    "created_at" timestamp with time zone NOT NULL,
+    "updated_at" timestamp with time zone NOT NULL,
+    PRIMARY KEY ("id")
+);
+
+INSERT INTO "delivery_boys" VALUES (1,'Piyush','9029537456','2016-05-14 12:14:15','2016-05-14 12:14:15'),(2,'Dheeraj','9029537457','2016-05-14 12:14:15','2016-05-14 12:14:15'),(3,'Shubham','9029537458','2016-05-14 12:14:15','2016-05-14 12:14:15'),(4,'Shivam','9029537459','2016-05-14 12:14:15','2016-05-14 12:14:15'),(5,'Kancha','9029537460','2016-05-14 12:14:15','2016-05-14 12:14:15'),(6,'Shashank','9029537461','2016-05-14 12:14:15','2016-05-14 12:14:15'),(7,'Sanchit','9029537462','2016-05-14 12:14:15','2016-05-14 12:14:15'),(8,'Debendra','9029537463','2016-05-14 12:14:15','2016-05-14 12:14:15'),(9,'Abhijeet','9029537464','2016-05-14 12:14:15','2016-05-14 12:14:15'),(10,'Mayank','9029537465','2016-05-14 12:14:15','2016-05-14 12:14:15');
+CREATE TABLE "delivery_requests" (
+    "id" integer NOT NULL,
+    "store_id" integer DEFAULT NULL,
+    "request_time" timestamp with time zone DEFAULT NULL,
+    "boys_required" integer DEFAULT NULL,
+    "total_amount" float DEFAULT NULL,
+    "status" varchar(510) DEFAULT NULL,
+    "accepted" integer DEFAULT '0',
+    "arrived" integer DEFAULT '0',
+    "on_route" integer DEFAULT '0',
+    "created_at" timestamp with time zone NOT NULL,
+    "updated_at" timestamp with time zone NOT NULL,
+    PRIMARY KEY ("id")
+);
+
+INSERT INTO "delivery_requests" VALUES (39,3,'2016-07-11 20:05:00',1,50,NULL,1,0,1,'2016-07-11 13:39:42','2016-07-11 13:40:27');
+CREATE TABLE "schema_migrations" (
+    "version" varchar(510) NOT NULL,
+    UNIQUE ("version")
+);
+
+INSERT INTO "schema_migrations" VALUES ('20160514120407'),('20160514145335'),('20160514150838'),('20160514151555'),('20160514172251');
+CREATE TABLE "stores" (
+    "id" integer NOT NULL,
+    "name" varchar(510) DEFAULT NULL,
+    "address" text ,
+    "lat" varchar(510) DEFAULT NULL,
+    "long" varchar(510) DEFAULT NULL,
+    "contact_person" varchar(510) DEFAULT NULL,
+    "mobile" varchar(510) DEFAULT NULL,
+    "created_at" timestamp with time zone NOT NULL,
+    "updated_at" timestamp with time zone NOT NULL,
+    PRIMARY KEY ("id")
+);
+
+INSERT INTO "stores" VALUES (3,'Barbeque Nation','Kormangla, Banglore','12.9279','77.6271','Piyush','9029537456','2016-05-14 15:00:24','2016-05-14 16:16:23');
+
+-- Post-data save --
+COMMIT;
+START TRANSACTION;
+
+-- Typecasts --
+
+-- Foreign keys --
+
+-- Sequences --
+CREATE SEQUENCE boy_requests_id_seq;
+SELECT setval('boy_requests_id_seq', max(id)) FROM boy_requests;
+ALTER TABLE "boy_requests" ALTER COLUMN "id" SET DEFAULT nextval('boy_requests_id_seq');
+CREATE SEQUENCE delivery_boys_id_seq;
+SELECT setval('delivery_boys_id_seq', max(id)) FROM delivery_boys;
+ALTER TABLE "delivery_boys" ALTER COLUMN "id" SET DEFAULT nextval('delivery_boys_id_seq');
+CREATE SEQUENCE delivery_requests_id_seq;
+SELECT setval('delivery_requests_id_seq', max(id)) FROM delivery_requests;
+ALTER TABLE "delivery_requests" ALTER COLUMN "id" SET DEFAULT nextval('delivery_requests_id_seq');
+CREATE SEQUENCE stores_id_seq;
+SELECT setval('stores_id_seq', max(id)) FROM stores;
+ALTER TABLE "stores" ALTER COLUMN "id" SET DEFAULT nextval('stores_id_seq');
+
+-- Full Text keys --
+
+COMMIT;

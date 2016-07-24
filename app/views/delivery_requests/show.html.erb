@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @delivery_request.store_id %>
+</p>
+
+<p>
+  <strong>Request time:</strong>
+  <%= @delivery_request.request_time %>
+</p>
+
+<p>
+  <strong>Boys required:</strong>
+  <%= @delivery_request.boys_required %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @delivery_request.total_amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @delivery_request.status %>
+</p>
+
+<p>
+  <strong>Accepted:</strong>
+  <%= @delivery_request.accepted %>
+</p>
+
+<p>
+  <strong>Arrived:</strong>
+  <%= @delivery_request.arrived %>
+</p>
+
+<p>
+  <strong>On route:</strong>
+  <%= @delivery_request.on_route %>
+</p>
+
+<%= link_to 'Edit', edit_delivery_request_path(@delivery_request) %> |
+<%= link_to 'Back', delivery_requests_path %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Delivery Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Request time</th>
+      <th>Boys required</th>
+      <th>Total amount</th>
+      <th>Status</th>
+      <th>Accepted</th>
+      <th>Arrived</th>
+      <th>On route</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @delivery_requests.each do |delivery_request| %>
+      <tr>
+        <td><%= delivery_request.store_id %></td>
+        <td><%= delivery_request.request_time %></td>
+        <td><%= delivery_request.boys_required %></td>
+        <td><%= delivery_request.total_amount %></td>
+        <td><%= delivery_request.status %></td>
+        <td><%= delivery_request.accepted %></td>
+        <td><%= delivery_request.arrived %></td>
+        <td><%= delivery_request.on_route %></td>
+        <td><%= link_to 'Show', delivery_request %></td>
+        <td><%= link_to 'Edit', edit_delivery_request_path(delivery_request) %></td>
+        <td><%= link_to 'Destroy', delivery_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Delivery request', new_delivery_request_path %>

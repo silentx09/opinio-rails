@@ -1,0 +1,54 @@
+<% if @requests.blank? %>
+<% else %>
+<div id ="tab_b_request_list">
+  <% @requests.each do |request| %>
+  
+  <div class="panel panel-default col-md-12 track_request_heading track_request" >
+              <div class = "col-md-4 track_request_heading_item">
+                Id - <%= request.id %>
+              </div>
+              <div class = "col-md-4 track_request_heading_item">
+                Time - <%= request.request_time%>
+              </div>
+              <div class = "col-md-4 track_request_heading_item">               
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Status
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id = "request_delivery_status">                    
+                    <li><a href="#">Pending</a></li>
+                    <li><a href="#">Completed</a></li>                    
+                  </ul>
+                </div>
+              </div>
+            </div>   
+            <div class="panel panel-default col-md-12 track_request track_request_content">
+                <div class = "col-md-3 track_request_heading_item">
+                Boys needed<br>
+                <span class="glyphicon glyphicon-user"></span>&nbsp;<%= request.boys_required %>
+              </div>
+              <div class = "col-md-3 track_request_heading_item">
+                Accepted<br>
+                <span class="glyphicon glyphicon-ok"></span>&nbsp;<%= request.accepted %>
+              </div>
+               <div class = "col-md-3 track_request_heading_item">
+                Arrived<br>
+                <span class="glyphicon glyphicon-pushpin"></span>&nbsp;<%= request.arrived %>
+              </div>
+              <div class = "col-md-3 track_request_heading_item">
+                On route<br>
+                <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<%= request.on_route %>
+              </div>
+             </div> 
+             <div id = "request_id_<%= request.id %>" class="boys_detail_container">
+             </div>
+
+  <% end %>
+
+</div>
+<% end %>
+
+
+
+ 

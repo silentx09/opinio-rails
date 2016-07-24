@@ -1,0 +1,66 @@
+<%= form_for(@boy_request) do |f| %>
+  <% if @boy_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boy_request.errors.count, "error") %> prohibited this boy_request from being saved:</h2>
+
+      <ul>
+      <% @boy_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :boy_id %><br>
+    <%= f.number_field :boy_id %>
+  </div>
+  <div class="field">
+    <%= f.label :request_id %><br>
+    <%= f.number_field :request_id %>
+  </div>
+  <div class="field">
+    <%= f.label :store_id %><br>
+    <%= f.number_field :store_id %>
+  </div>
+  <div class="field">
+    <%= f.label :eta %><br>
+    <%= f.text_field :eta %>
+  </div>
+  <div class="field">
+    <%= f.label :eta %><br>
+    <%= f.text_field :etd %>
+  </div>
+  <div class="field">
+    <%= f.label :request_status %><br>
+    <%= f.text_field :request_status %>
+  </div>
+  <div class="field">
+    <%= f.label :order_id %><br>
+    <%= f.number_field :order_id %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_start_time %><br>
+    <%= f.text_field :delivery_start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_destination %><br>
+    <%= f.text_area :delivery_destination %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_status %><br>
+    <%= f.text_field :delivery_status %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_lat %><br>
+    <%= f.text_area :delivery_lat %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_lng %><br>
+    <%= f.text_field :delivery_lng %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

@@ -1,0 +1,170 @@
+-- MySQL dump 10.13  Distrib 5.7.11, for osx10.11 (x86_64)
+--
+-- Host: localhost    Database: opinio_development
+-- ------------------------------------------------------
+-- Server version	5.7.11
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO,POSTGRESQL' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table "boy_requests"
+--
+
+DROP TABLE IF EXISTS "boy_requests";
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE "boy_requests" (
+  "id" int(11) NOT NULL,
+  "boy_id" int(11) DEFAULT NULL,
+  "request_id" int(11) DEFAULT NULL,
+  "eta" varchar(255) DEFAULT NULL,
+  "request_status" varchar(255) DEFAULT NULL,
+  "order_id" int(11) DEFAULT NULL,
+  "delivery_start_time" varchar(255) DEFAULT NULL,
+  "delivery_destination" text,
+  "delivery_status" varchar(255) DEFAULT NULL,
+  "created_at" datetime NOT NULL,
+  "updated_at" datetime NOT NULL,
+  "store_id" int(11) DEFAULT NULL,
+  "delivery_lat" varchar(255) DEFAULT NULL,
+  "delivery_lng" varchar(255) DEFAULT NULL,
+  "etd" varchar(255) DEFAULT NULL,
+  PRIMARY KEY ("id")
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table "boy_requests"
+--
+
+LOCK TABLES "boy_requests" WRITE;
+/*!40000 ALTER TABLE "boy_requests" DISABLE KEYS */;
+INSERT INTO "boy_requests" VALUES (62,1,39,NULL,'On Route',101,'Mon, 11 Jul 2016 13:41:31','Hebbal, Bengaluru, Karnataka, India',NULL,'2016-07-11 13:40:27','2016-07-11 13:41:31',3,'13.0357695','77.59702219999997',NULL);
+/*!40000 ALTER TABLE "boy_requests" ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table "delivery_boys"
+--
+
+DROP TABLE IF EXISTS "delivery_boys";
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE "delivery_boys" (
+  "id" int(11) NOT NULL,
+  "name" varchar(255) DEFAULT NULL,
+  "mobile" varchar(255) DEFAULT NULL,
+  "created_at" datetime NOT NULL,
+  "updated_at" datetime NOT NULL,
+  PRIMARY KEY ("id")
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table "delivery_boys"
+--
+
+LOCK TABLES "delivery_boys" WRITE;
+/*!40000 ALTER TABLE "delivery_boys" DISABLE KEYS */;
+INSERT INTO "delivery_boys" VALUES (1,'Piyush','9029537456','2016-05-14 12:14:15','2016-05-14 12:14:15'),(2,'Dheeraj','9029537457','2016-05-14 12:14:15','2016-05-14 12:14:15'),(3,'Shubham','9029537458','2016-05-14 12:14:15','2016-05-14 12:14:15'),(4,'Shivam','9029537459','2016-05-14 12:14:15','2016-05-14 12:14:15'),(5,'Kancha','9029537460','2016-05-14 12:14:15','2016-05-14 12:14:15'),(6,'Shashank','9029537461','2016-05-14 12:14:15','2016-05-14 12:14:15'),(7,'Sanchit','9029537462','2016-05-14 12:14:15','2016-05-14 12:14:15'),(8,'Debendra','9029537463','2016-05-14 12:14:15','2016-05-14 12:14:15'),(9,'Abhijeet','9029537464','2016-05-14 12:14:15','2016-05-14 12:14:15'),(10,'Mayank','9029537465','2016-05-14 12:14:15','2016-05-14 12:14:15');
+/*!40000 ALTER TABLE "delivery_boys" ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table "delivery_requests"
+--
+
+DROP TABLE IF EXISTS "delivery_requests";
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE "delivery_requests" (
+  "id" int(11) NOT NULL,
+  "store_id" int(11) DEFAULT NULL,
+  "request_time" datetime DEFAULT NULL,
+  "boys_required" int(11) DEFAULT NULL,
+  "total_amount" float DEFAULT NULL,
+  "status" varchar(255) DEFAULT NULL,
+  "accepted" int(11) DEFAULT '0',
+  "arrived" int(11) DEFAULT '0',
+  "on_route" int(11) DEFAULT '0',
+  "created_at" datetime NOT NULL,
+  "updated_at" datetime NOT NULL,
+  PRIMARY KEY ("id")
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table "delivery_requests"
+--
+
+LOCK TABLES "delivery_requests" WRITE;
+/*!40000 ALTER TABLE "delivery_requests" DISABLE KEYS */;
+INSERT INTO "delivery_requests" VALUES (39,3,'2016-07-11 20:05:00',1,50,NULL,1,0,1,'2016-07-11 13:39:42','2016-07-11 13:40:27');
+/*!40000 ALTER TABLE "delivery_requests" ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table "schema_migrations"
+--
+
+DROP TABLE IF EXISTS "schema_migrations";
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE "schema_migrations" (
+  "version" varchar(255) NOT NULL,
+  UNIQUE KEY "unique_schema_migrations" ("version")
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table "schema_migrations"
+--
+
+LOCK TABLES "schema_migrations" WRITE;
+/*!40000 ALTER TABLE "schema_migrations" DISABLE KEYS */;
+INSERT INTO "schema_migrations" VALUES ('20160514120407'),('20160514145335'),('20160514150838'),('20160514151555'),('20160514172251');
+/*!40000 ALTER TABLE "schema_migrations" ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table "stores"
+--
+
+DROP TABLE IF EXISTS "stores";
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE "stores" (
+  "id" int(11) NOT NULL,
+  "name" varchar(255) DEFAULT NULL,
+  "address" text,
+  "lat" varchar(255) DEFAULT NULL,
+  "long" varchar(255) DEFAULT NULL,
+  "contact_person" varchar(255) DEFAULT NULL,
+  "mobile" varchar(255) DEFAULT NULL,
+  "created_at" datetime NOT NULL,
+  "updated_at" datetime NOT NULL,
+  PRIMARY KEY ("id")
+);
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table "stores"
+--
+
+LOCK TABLES "stores" WRITE;
+/*!40000 ALTER TABLE "stores" DISABLE KEYS */;
+INSERT INTO "stores" VALUES (3,'Barbeque Nation','Kormangla, Banglore','12.9279','77.6271','Piyush','9029537456','2016-05-14 15:00:24','2016-05-14 16:16:23');
+/*!40000 ALTER TABLE "stores" ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-07-24 23:43:26
