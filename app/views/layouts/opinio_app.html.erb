@@ -17,8 +17,8 @@
 
       <!--scripts-->    
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>       
-      <script src="http://localhost:3000/assets/js/bootstrap-datetimepicker.min.js"></script>     
-      <script src="http://localhost:3000/assets/js/sweetalert.min.js"></script>     
+      <script src="<%= ENV['ASSET_URL'] %>assets/js/bootstrap-datetimepicker.min.js"></script>     
+      <script src="<%= ENV['ASSET_URL'] %>assets/js/sweetalert.min.js"></script>     
       <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
     </head>
     <body>
@@ -37,7 +37,7 @@
                 <!-- Input group starts -->                
                 <div class="form-group col-md-12">
                   <label for="pac-input">Store location to arrive.</label>
-                  <input type="text" class="form-control" id="pac-input">
+                  <input type="text" class="form-control" id="pac-input" value="Barbeque Nation, 1st Cross Road, 1st Block Koramangala, Bengaluru, Karnataka, India">
                   <input type="text" id="hidden_place" />
                   <div id="type-selector" class="controls" style="display:none">
                     <input type="radio" name="type" id="changetype-all" checked="checked">
