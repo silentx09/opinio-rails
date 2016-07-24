@@ -527,8 +527,9 @@ function gpsSimulator(callback){
     var url = "https://boiling-island-46905.herokuapp.com/go";
     $.ajax({
         type: "GET",
-        dataType: "json",
+        dataType: "jsonp",
         url: url,
+        crossDomain: true,
         data: { "latitude": delivery_lat,
             "longitude"  : delivery_lng           
         },        
