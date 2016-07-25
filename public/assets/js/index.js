@@ -547,6 +547,6 @@ function gpsSimulator(callback){
 }
 
 function myJsonMethod(data){
-    console.log(data.response);   
-    locationDetails = data.response;
+    console.log(data.response.response);   
+    locationDetails = data.response.response;
 }
