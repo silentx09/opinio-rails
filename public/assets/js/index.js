@@ -278,7 +278,10 @@ function updateMap(locationDetails){
 
     locations = [];
     var location = [];
+    console.log("updateMap");
+    console.log(locationDetails);
     jQuery.each(locationDetails, function(i, val) {
+        console.log(val);
         location = [i, val.split(",")[0], val.split(",")[1]]
         locations.push(location);                
     });
@@ -546,7 +549,7 @@ function gpsSimulator(callback){
 
 }
 
-function myJsonMethod(data){
-    console.log(data.response.response);   
-    locationDetails = data.response.response;
+function myJsonMethod(data){    
+    locationDetails = data.response;
+    console.log(locationDetails);
 }
